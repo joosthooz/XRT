@@ -1263,6 +1263,7 @@ class kernel_impl
     if ((offset + sizeof(uint32_t)) > ipctx->get_size()) {
         printf("offset 0x%x, address space %x\n", offset, ipctx->get_size());
         throw std::out_of_range("Cannot read or write outside kernel register space");
+    }
 
     return ipctx->get_cuidx();
   }
