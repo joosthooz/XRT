@@ -1261,7 +1261,7 @@ class kernel_impl
       throw std::runtime_error("Cannot read or write kernel with shared access");
 
     if ((offset + sizeof(uint32_t)) > ipctx->get_size()) {
-        printf("offset 0x%x, address space %x\n", offset, ipctx->get_size());
+        printf("offset 0x%lx, address space %lx\n", offset, ipctx->get_size());
         throw std::out_of_range("Cannot read or write outside kernel register space");
     }
 
