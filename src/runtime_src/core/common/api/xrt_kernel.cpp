@@ -1260,7 +1260,8 @@ class kernel_impl
     if (!force && mode != ip_context::access_mode::exclusive && !xrt_core::config::get_rw_shared())
       throw std::runtime_error("Cannot read or write kernel with shared access");
 
-    if ((offset + sizeof(uint32_t)) > ipctx->get_size())
+    if ((offset + sizeof(uint32_t)) > ipctx->get_size()) {
+        printf("offset 0x%x, address space %x\n", offset, ipctx->get_size());
         throw std::out_of_range("Cannot read or write outside kernel register space");
 
     return ipctx->get_cuidx();
